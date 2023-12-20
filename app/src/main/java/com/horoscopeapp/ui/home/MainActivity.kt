@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.horoscopeapp.R
 import com.horoscopeapp.databinding.ActivityMainBinding
@@ -22,12 +23,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUI() {
         initNavigation()
+        setupToolbar()
     }
 
     private fun initNavigation() {
-        val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navHost =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
 
         navController = navHost.navController
         binding.bottomNavView.setupWithNavController(navController)
+    }
+
+    private fun setupToolbar() {
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 }

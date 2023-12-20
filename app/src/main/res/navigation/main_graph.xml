@@ -8,16 +8,16 @@
     <fragment
         android:id="@+id/horoscopeFragment"
         android:name="com.horoscopeapp.ui.horoscope.HoroscopeFragment"
-        android:label="fragment_horoscope"
+        android:label="@string/horoscope"
         tools:layout="@layout/fragment_horoscope" />
     <fragment
         android:id="@+id/luckFragment"
         android:name="com.horoscopeapp.ui.luck.LuckFragment"
-        android:label="fragment_luck"
+        android:label="@string/luck"
         tools:layout="@layout/fragment_luck" />
     <fragment
         android:id="@+id/palmistryFragment"
         android:name="com.horoscopeapp.ui.palmistry.PalmistryFragment"
-        android:label="fragment_palmistry"
+        android:label="@string/palmistry"
         tools:layout="@layout/fragment_palmistry" />
 </navigation>
