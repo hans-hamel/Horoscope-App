@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Horoscope App</string>
+    <!-- BottomBar -->
+    <string name="horoscope">Horoscope</string>
+    <string name="palmistry">Palmistry</string>
+    <string name="luck">Luck</string>
+</resources>
