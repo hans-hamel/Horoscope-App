@@ -54,6 +54,8 @@ dependencies {
     // Navigation Component
     implementation(Dependencies.NAVIGATION)
     implementation(Dependencies.NAVIGATION_KTX)
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     // Hilt
     implementation(Dependencies.HILT)
     kapt(Dependencies.HILT_ANDROID_COMPILER)
