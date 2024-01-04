@@ -5,10 +5,10 @@ Fragments
 Navigation Component
 Gradle KTS
 Dependency injection
-StateFlow y coroutines
+StateFlow and coroutines
 RecyclerView
-Retrofit, interceptors y mappers
+Retrofit, interceptors and mappers
 Intents
 Camera X
 Animations
-UnitTest y UITest
+UnitTest and UITest
