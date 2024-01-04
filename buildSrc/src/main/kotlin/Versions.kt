@@ -6,7 +6,9 @@ object Versions {
     // Navigation Component
     const val NAVIGATION_VERSION = "2.7.6"
     // Hilt
-    const val HILT_VERSION = "2.49"
+    const val HILT_VERSION = "2.48.1"
+    // Coroutines
+    const val COROUTINES_VERSION = "1.7.3"
     // JUNIT
     const val JUNIT_VERSION = "4.13.2"
     const val JUNIT_EXT_VERSION = "1.1.5"

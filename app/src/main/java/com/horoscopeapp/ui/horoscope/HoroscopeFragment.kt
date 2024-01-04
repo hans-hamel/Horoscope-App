@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.horoscopeapp.databinding.FragmentHoroscopeBinding
 import com.horoscopeapp.ui.horoscope.adapter.HoroscopeAdapter
+import com.horoscopeapp.utils.Constants.SPAN_COUNT
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -36,10 +40,16 @@ class HoroscopeFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        horoscopeAdapter = HoroscopeAdapter()
+        horoscopeAdapter = HoroscopeAdapter(onItemSelected = { horoscopeInfo ->
+            findNavController().navigate(
+                HoroscopeFragmentDirections.actionHoroscopeFragmentToHoroscopeDetailFragment(
+                    horoscopeInfo.name
+                )
+            )
+        })
 
         binding.rvHoroscope.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = GridLayoutManager(context, SPAN_COUNT)
             adapter = horoscopeAdapter
         }
     }
@@ -50,8 +60,10 @@ class HoroscopeFragment : Fragment() {
 
     private fun initUIState() {
         lifecycleScope.launch {
-            viewModel.horoscope.collect { list ->
-                horoscopeAdapter.updateList(list)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.horoscope.collect { list ->
+                    horoscopeAdapter.updateList(list)
+                }
             }
         }
     }

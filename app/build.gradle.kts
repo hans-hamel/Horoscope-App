@@ -9,6 +9,8 @@ plugins {
     id("com.google.devtools.ksp")
     // Parcelize
     id("kotlin-parcelize")
+    // Safe Args
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -55,7 +57,7 @@ dependencies {
     implementation(Dependencies.NAVIGATION)
     implementation(Dependencies.NAVIGATION_KTX)
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation(Dependencies.COROUTINES)
     // Hilt
     implementation(Dependencies.HILT)
     kapt(Dependencies.HILT_ANDROID_COMPILER)

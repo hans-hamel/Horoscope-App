@@ -9,6 +9,8 @@ object Dependencies {
     // Hilt
     const val HILT = "com.google.dagger:hilt-android:${Versions.HILT_VERSION}"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT_VERSION}"
+    // Coroutines
+    const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES_VERSION}"
     // JUNIT
     const val JUNIT = "junit:junit:${Versions.JUNIT_VERSION}"
     const val JUNIT_EXT = "androidx.test.ext:junit:${Versions.JUNIT_EXT_VERSION}"
