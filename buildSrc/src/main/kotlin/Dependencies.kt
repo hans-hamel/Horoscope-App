@@ -11,6 +11,10 @@ object Dependencies {
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT_VERSION}"
     // Coroutines
     const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES_VERSION}"
+    // Retrofit
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT_VERSION}"
+    const val RETROFIT_GSON = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT_VERSION}"
+    const val RETROFIT_LOGGING = "com.squareup.okhttp3:logging-interceptor:${Versions.RETROFIT_LOGGING}"
     // JUNIT
     const val JUNIT = "junit:junit:${Versions.JUNIT_VERSION}"
     const val JUNIT_EXT = "androidx.test.ext:junit:${Versions.JUNIT_EXT_VERSION}"

@@ -9,6 +9,9 @@ object Versions {
     const val HILT_VERSION = "2.48.1"
     // Coroutines
     const val COROUTINES_VERSION = "1.7.3"
+    // Retrofit
+    const val RETROFIT_VERSION = "2.9.0"
+    const val RETROFIT_LOGGING = "4.10.0"
     // JUNIT
     const val JUNIT_VERSION = "4.13.2"
     const val JUNIT_EXT_VERSION = "1.1.5"

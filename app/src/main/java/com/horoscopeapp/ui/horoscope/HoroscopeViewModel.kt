@@ -17,8 +17,4 @@ class HoroscopeViewModel @Inject constructor(private val horoscopeProvider: Horo
     init {
         _horoscope.value = horoscopeProvider.getHoroscopes()
     }
-
-    fun getHoroscope() {
-
-    }
 }

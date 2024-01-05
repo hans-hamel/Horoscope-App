@@ -61,6 +61,10 @@ dependencies {
     // Hilt
     implementation(Dependencies.HILT)
     kapt(Dependencies.HILT_ANDROID_COMPILER)
+    // Retrofit
+    implementation (Dependencies.RETROFIT)
+    implementation (Dependencies.RETROFIT_GSON)
+    implementation (Dependencies.RETROFIT_LOGGING)
     // Tests
     testImplementation(Dependencies.JUNIT)
     androidTestImplementation(Dependencies.JUNIT_EXT)
