@@ -64,8 +64,8 @@ class HoroscopeDetailFragment : Fragment() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { horoscopeDetailState ->
                     when (horoscopeDetailState) {
-                        is HoroscopeDetailState.Failure -> loadingState()
-                        HoroscopeDetailState.Loading -> failureState()
+                        is HoroscopeDetailState.Failure -> failureState()
+                        HoroscopeDetailState.Loading -> loadingState()
                         is HoroscopeDetailState.Success -> successState(horoscopeDetailState)
                     }
                 }
@@ -82,7 +82,7 @@ class HoroscopeDetailFragment : Fragment() {
     }
 
     private fun successState(horoscopeDetailState: HoroscopeDetailState.Success) {
-        //binding.pbLoading.isVisible = false
+        binding.pbLoading.isVisible = false
         binding.tvHoroscopeDetailTitle.text = horoscopeDetailState.sign
         binding.tvHoroscopeDetailBody.text = horoscopeDetailState.prediction
 
