@@ -1,4 +1,3 @@
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -28,12 +27,20 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            resValue("string", "appname", "Horoscope App")
+            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")
+        }
+        getByName("debug") {
+            isDebuggable = true
+            resValue("string", "appname", "Debug Horoscope App")
+            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")
         }
     }
     compileOptions {
@@ -45,6 +52,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -62,9 +70,9 @@ dependencies {
     implementation(Dependencies.HILT)
     kapt(Dependencies.HILT_ANDROID_COMPILER)
     // Retrofit
-    implementation (Dependencies.RETROFIT)
-    implementation (Dependencies.RETROFIT_GSON)
-    implementation (Dependencies.RETROFIT_LOGGING)
+    implementation(Dependencies.RETROFIT)
+    implementation(Dependencies.RETROFIT_GSON)
+    implementation(Dependencies.RETROFIT_LOGGING)
     // Tests
     testImplementation(Dependencies.JUNIT)
     androidTestImplementation(Dependencies.JUNIT_EXT)
