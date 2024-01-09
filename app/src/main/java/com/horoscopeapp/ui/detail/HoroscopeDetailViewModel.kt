@@ -14,8 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HoroscopeDetailViewModel @Inject constructor(
     private val getPredictionUseCase: GetPredictionUseCase
-) :
-    ViewModel() {
+) : ViewModel() {
 
     private var _state = MutableStateFlow<HoroscopeDetailState>(HoroscopeDetailState.Loading)
     val state = _state
@@ -30,7 +29,11 @@ class HoroscopeDetailViewModel @Inject constructor(
             val result = withContext(Dispatchers.IO) { getPredictionUseCase(sign.name) }
 
             _state.value = result?.let { predictionModel ->
-                 HoroscopeDetailState.Success(predictionModel.horoscope, predictionModel.sign, horoscopeModel)
+                HoroscopeDetailState.Success(
+                    predictionModel.horoscope,
+                    predictionModel.sign,
+                    horoscopeModel
+                )
             } ?: HoroscopeDetailState.Failure("An error occurred.")
         }
     }

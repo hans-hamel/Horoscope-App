@@ -1,6 +1,7 @@
 package com.horoscopeapp.ui.luck
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,14 +15,19 @@ import androidx.core.animation.doOnEnd
 import androidx.core.view.isVisible
 import com.horoscopeapp.R
 import com.horoscopeapp.databinding.FragmentLuckBinding
+import com.horoscopeapp.ui.provider.RandomCardProvider
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Random
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LuckFragment : Fragment() {
 
     private var _binding: FragmentLuckBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var randomCardProvider: RandomCardProvider
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +43,32 @@ class LuckFragment : Fragment() {
     }
 
     private fun initUI() {
+        initPrediction()
         initListeners()
+    }
+
+    private fun initPrediction() {
+        val luck = randomCardProvider.getLucky()
+
+        luck?.let { luckyModel ->
+            val luckText = getString(luckyModel.text)
+
+            binding.tvLuckyText.text = luckText
+            binding.ivLuckyCard.setImageResource(luckyModel.image)
+            binding.tvShareLucky.setOnClickListener { shareResult(luckText) }
+        }
+    }
+
+    private fun shareResult(prediction: String) {
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, prediction)
+            type = "text/plain"
+        }
+
+        val shareIntent = Intent.createChooser(sendIntent, null)
+
+        startActivity(shareIntent)
     }
 
     private fun initListeners() {
@@ -49,15 +80,13 @@ class LuckFragment : Fragment() {
     private fun spinRoulette() {
         val random = Random()
         val degrees = random.nextInt(1440) + 360
-        val animator =
-            ObjectAnimator.ofFloat(binding.ivRoulette, View.ROTATION, 0f, degrees.toFloat()).apply {
-                duration = 2000
-                interpolator = DecelerateInterpolator()
-                doOnEnd {
-                    slideCard()
-                }
-                start()
-            }
+
+        ObjectAnimator.ofFloat(binding.ivRoulette, View.ROTATION, 0f, degrees.toFloat()).apply {
+            duration = 2000
+            interpolator = DecelerateInterpolator()
+            doOnEnd { slideCard() }
+            start()
+        }
     }
 
     private fun slideCard() {
@@ -97,12 +126,19 @@ class LuckFragment : Fragment() {
     }
 
     private fun showPrediction() {
+        appearAnimation()
+        disappearAnimation()
+    }
+
+    private fun appearAnimation() {
         val appearAnimation = AlphaAnimation(0.0f, 1.0f)
 
         appearAnimation.duration = 1000
 
         binding.clPrediction.startAnimation(appearAnimation)
+    }
 
+    private fun disappearAnimation() {
         val disappearAnimation = AlphaAnimation(1.0f, 0.0f)
 
         disappearAnimation.duration = 200
