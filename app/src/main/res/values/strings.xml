@@ -22,4 +22,5 @@
 
     <!-- Horoscope Detail -->
     <string name="horoscope_detail">Horoscope Detail</string>
+    <string name="share_lucky">Share Lucky</string>
 </resources>

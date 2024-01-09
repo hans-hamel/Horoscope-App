@@ -37,26 +37,15 @@ class HoroscopeDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
-        val horoscopeModel = when (args.horoscope) {
-            R.string.aquarius -> HoroscopeModel.Aquarius
-            R.string.aries -> HoroscopeModel.Aries
-            R.string.cancer -> HoroscopeModel.Cancer
-            R.string.capricorn -> HoroscopeModel.Capricorn
-            R.string.gemini -> HoroscopeModel.Gemini
-            R.string.leo -> HoroscopeModel.Leo
-            R.string.libra -> HoroscopeModel.Libra
-            R.string.pisces -> HoroscopeModel.Pisces
-            R.string.sagittarius -> HoroscopeModel.Sagittarius
-            R.string.scorpio -> HoroscopeModel.Scorpio
-            R.string.taurus -> HoroscopeModel.Taurus
-            R.string.virgo -> HoroscopeModel.Virgo
-            else -> throw (Error("Invalid sign")) // Improve
-        }
-        viewModel.getPrediction(horoscopeModel)
+        initViewModel()
     }
 
     private fun initUI() {
         initUIState()
+    }
+
+    private fun initViewModel() {
+        viewModel.getPrediction(getHoroscopeModel())
     }
 
     private fun initUIState() {
@@ -71,6 +60,22 @@ class HoroscopeDetailFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun getHoroscopeModel() = when (args.horoscope) {
+        R.string.aquarius -> HoroscopeModel.Aquarius
+        R.string.aries -> HoroscopeModel.Aries
+        R.string.cancer -> HoroscopeModel.Cancer
+        R.string.capricorn -> HoroscopeModel.Capricorn
+        R.string.gemini -> HoroscopeModel.Gemini
+        R.string.leo -> HoroscopeModel.Leo
+        R.string.libra -> HoroscopeModel.Libra
+        R.string.pisces -> HoroscopeModel.Pisces
+        R.string.sagittarius -> HoroscopeModel.Sagittarius
+        R.string.scorpio -> HoroscopeModel.Scorpio
+        R.string.taurus -> HoroscopeModel.Taurus
+        R.string.virgo -> HoroscopeModel.Virgo
+        else -> throw (Error("Invalid sign")) // Improve
     }
 
     private fun failureState() {
