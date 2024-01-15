@@ -12,6 +12,8 @@ object Versions {
     // Retrofit
     const val RETROFIT_VERSION = "2.9.0"
     const val RETROFIT_LOGGING = "4.10.0"
+    // Camera X
+    const val CAMERA_VERSION = "1.3.1"
     // JUNIT
     const val JUNIT_VERSION = "4.13.2"
     const val JUNIT_EXT_VERSION = "1.1.5"

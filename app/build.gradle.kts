@@ -73,6 +73,12 @@ dependencies {
     implementation(Dependencies.RETROFIT)
     implementation(Dependencies.RETROFIT_GSON)
     implementation(Dependencies.RETROFIT_LOGGING)
+    // Camera X
+    implementation (Dependencies.CAMERA_CORE)
+    implementation (Dependencies.CAMERA2)
+    implementation (Dependencies.CAMERA_LIFECYCLE)
+    implementation (Dependencies.CAMERA_VIEW)
+    implementation (Dependencies.CAMERA_EXTENSIONS)
     // Tests
     testImplementation(Dependencies.JUNIT)
     androidTestImplementation(Dependencies.JUNIT_EXT)

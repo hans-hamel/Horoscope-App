@@ -15,6 +15,12 @@ object Dependencies {
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT_VERSION}"
     const val RETROFIT_GSON = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT_VERSION}"
     const val RETROFIT_LOGGING = "com.squareup.okhttp3:logging-interceptor:${Versions.RETROFIT_LOGGING}"
+    // Camera X
+    const val CAMERA_CORE = "androidx.camera:camera-core:${Versions.CAMERA_VERSION}"
+    const val CAMERA2 = "androidx.camera:camera-camera2:${Versions.CAMERA_VERSION}"
+    const val CAMERA_LIFECYCLE = "androidx.camera:camera-lifecycle:${Versions.CAMERA_VERSION}"
+    const val CAMERA_VIEW = "androidx.camera:camera-view:${Versions.CAMERA_VERSION}"
+    const val CAMERA_EXTENSIONS = "androidx.camera:camera-extensions:${Versions.CAMERA_VERSION}"
     // JUNIT
     const val JUNIT = "junit:junit:${Versions.JUNIT_VERSION}"
     const val JUNIT_EXT = "androidx.test.ext:junit:${Versions.JUNIT_EXT_VERSION}"
