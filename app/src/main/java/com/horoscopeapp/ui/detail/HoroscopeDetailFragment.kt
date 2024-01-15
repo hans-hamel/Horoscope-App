@@ -49,7 +49,7 @@ class HoroscopeDetailFragment : Fragment() {
     }
 
     private fun initUIState() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { horoscopeDetailState ->
                     when (horoscopeDetailState) {
