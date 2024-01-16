@@ -17,6 +17,10 @@ object Versions {
     // JUNIT
     const val JUNIT_VERSION = "4.13.2"
     const val JUNIT_EXT_VERSION = "1.1.5"
+    // MockK
+    const val MOCKK_VERSION = "1.12.3"
+    // Kotlin Test
+    const val KOTLIN_TEST_VERSION = "3.4.2"
     // Espresso
     const val ESPRESSO_CORE_VERSION = "3.5.1"
 }

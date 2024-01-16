@@ -79,8 +79,12 @@ dependencies {
     implementation (Dependencies.CAMERA_LIFECYCLE)
     implementation (Dependencies.CAMERA_VIEW)
     implementation (Dependencies.CAMERA_EXTENSIONS)
-    // Tests
+    // Unit Tests
     testImplementation(Dependencies.JUNIT)
+    testImplementation(Dependencies.KOTLIN_TEST)
+    // MockK
+    testImplementation(Dependencies.MOCKK)
+    // Instrumented Tests
     androidTestImplementation(Dependencies.JUNIT_EXT)
     androidTestImplementation(Dependencies.ESPRESSO)
 }

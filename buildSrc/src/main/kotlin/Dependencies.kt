@@ -24,6 +24,10 @@ object Dependencies {
     // JUNIT
     const val JUNIT = "junit:junit:${Versions.JUNIT_VERSION}"
     const val JUNIT_EXT = "androidx.test.ext:junit:${Versions.JUNIT_EXT_VERSION}"
+    // MockK
+    const val MOCKK = "io.mockk:mockk:${Versions.MOCKK_VERSION}"
+    // Kotlin Test
+    const val KOTLIN_TEST = "io.kotlintest:kotlintest-runner-junit5:${Versions.KOTLIN_TEST_VERSION}"
     // Espresso
     const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE_VERSION}"
 }
