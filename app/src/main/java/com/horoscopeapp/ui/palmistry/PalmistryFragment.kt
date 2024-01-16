@@ -8,6 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.Preview
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
 import com.horoscopeapp.databinding.FragmentPalmistryBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +25,7 @@ class PalmistryFragment : Fragment() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted ->
         if (isGranted) {
-            // Start camera
+            startCamera()
         } else {
             Toast.makeText(
                 requireContext(),
@@ -35,10 +39,32 @@ class PalmistryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (checkCameraPermission()) {
-            // Start camera
+            startCamera()
         } else {
             requestPermissionLauncher.launch(CAMERA)
         }
+    }
+
+    private fun startCamera() {
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+
+        cameraProviderFuture.addListener({
+
+            val cameraProvider = cameraProviderFuture.get()
+            val preview = Preview.Builder()
+                .build()
+                .also {
+                    it.setSurfaceProvider(binding.pvFinder.surfaceProvider)
+                }
+            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+
+            try {
+                cameraProvider.unbindAll()
+                cameraProvider.bindToLifecycle(this, cameraSelector, preview)
+            } catch (exception: Exception) {
+                // Handle error
+            }
+        }, ContextCompat.getMainExecutor(requireContext()))
     }
 
     private fun checkCameraPermission(): Boolean {
