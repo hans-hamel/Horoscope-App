@@ -23,7 +23,7 @@ android {
         versionCode = ConfigData.VERSION_CODE
         versionName = ConfigData.VERSION_NAME
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.horoscopeapp.CustomTestRunner"
     }
 
     buildTypes {
@@ -87,6 +87,11 @@ dependencies {
     // Instrumented Tests
     androidTestImplementation(Dependencies.JUNIT_EXT)
     androidTestImplementation(Dependencies.ESPRESSO)
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.5.1")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
+    androidTestImplementation("androidx.fragment:fragment-testing:1.6.2")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.49")
 }
 
 // Allow references to generated code
